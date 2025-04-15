@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Pour Margot</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #fce4ec, #f8bbd0);
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+      color: #4a148c;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin: 0.2em;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    p {
+      font-size: 1.5em;
+      max-width: 600px;
+      margin: 0.5em;
+      animation: fadeIn 3s ease-in-out;
+    }
+
+    .signature {
+      margin-top: 2em;
+      font-style: italic;
+      font-size: 1.2em;
+      color: #880e4f;
+      animation: fadeIn 4s ease-in-out;
+    }
+
+    button {
+      margin-top: 3em;
+      padding: 1em 2em;
+      font-size: 1em;
+      border: none;
+      background-color: #ad1457;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #880e4f;
+    }
+
+    #surprise {
+      display: none;
+      margin-top: 2em;
+      font-size: 1.5em;
+      color: #6a1b9a;
+      animation: fadeIn 2s ease-in-out forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .heart {
+      position: fixed;
+      top: -20px;
+      font-size: 24px;
+      color: red;
+      animation: fall 5s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Bonjour, la plus belle femme du monde</h1>
+  <p>Juste un petit rappel que tu illumines ce monde rien que par ton sourire.</p>
+  <div class="signature">Margot l'aigrie</div>
+
+  <button onclick="revealSurprise()">Clique ici si tu veux une surprise...</button>
+
+  <div id="surprise">Je crois que tu rends chaque jour plus beau rien qu'en étant toi.</div>
+
+  <script>
+    function revealSurprise() {
+      document.getElementById('surprise').style.display = 'block';
+      for (let i = 0; i < 30; i++) {
+        let heart = document.createElement('div');
+        heart.classList.add('heart');
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+        heart.innerText = '❤';
+        document.body.appendChild(heart);
+        setTimeout(() => {
+          heart.remove();
+        }, 5000);
+      }
+    }
+  </script>
+</body>
+</html>
